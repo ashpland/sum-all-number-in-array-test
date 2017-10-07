@@ -14,26 +14,14 @@
 
 @implementation SumArrayTests
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+int sumItems(NSArray *array) {
+    // Sum all the numbers in the array
+    return 0;
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testSumArray {
+    XCTAssertEqual(sumItems(@[@1, @2, @3, @4, @5]), 15);
+    XCTAssertEqual(sumItems(@[@[@1, @2, @[@[@3], @4]], @5, @[]]), 15);
 }
 
 @end
