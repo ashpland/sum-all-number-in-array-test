@@ -16,7 +16,16 @@
 
 int sumItems(NSArray *array) {
     // Sum all the numbers in the array
-    return 0;
+    int sum = 0;
+    
+    for (id item in array) {
+        if ([item isKindOfClass:[NSArray class]]) {
+            sum += sumItems(item);
+        } else {
+            sum += [item intValue];
+        }
+    }
+    return sum;
 }
 
 - (void)testSumArray {
