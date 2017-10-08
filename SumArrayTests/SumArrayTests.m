@@ -15,13 +15,24 @@
 @implementation SumArrayTests
 
 int sumItems(NSArray *array) {
-    // Sum all the numbers in the array
-    return 0;
+    
+    int sum = 0;
+    
+    for (int i = 0; i < array.count; i++) {
+        if ([array[i] isKindOfClass:[NSNumber class]]) {
+            sum = sum + [array[i] intValue];
+        } else if ([array[i] isKindOfClass:[NSArray class]]) {
+            sum = sum + sumItems(array[i]);
+        }
+    }
+    
+    return sum;
 }
 
 - (void)testSumArray {
     XCTAssertEqual(sumItems(@[@1, @2, @3, @4, @5]), 15);
     XCTAssertEqual(sumItems(@[@[@1, @2, @[@[@3], @4]], @5, @[]]), 15);
+    XCTAssertEqual(sumItems(@[@[@[@[@[@[@[@[@[@[@[@[@[@1]]]]]]]]]]]]]), 1);
 }
 
 @end
